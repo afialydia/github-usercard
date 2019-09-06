@@ -28,12 +28,26 @@ const followersArray = [
   "dylanmestyanek", "codeOfTheFuture", "thisbenrogers", "daredtech", "Wais-A"
 ]
 
-followersArray.forEach(item =>
-axios
-  .get('https://api.github.com/users/codeOfTheFuture')
+
+// followersArray.forEach(item =>
+//   axios
+//     .get('https://api.github.com/users/codeOfTheFuture')
+//     .then(response => {
+//       console.log(response);
+//       // response.data.login
+//       const newFriend = frands(response.data);
+//       entryPoint.appendChild(newFriend);
+  
+//     })
+//     .catch(error => {
+//       console.log("The data was not returned", error);
+//     })
+//   );
+
+axios.get('https://api.github.com/users/dylanmestyanek')
   .then(response => {
     console.log(response);
-    response.data.login
+    // response.data.login
     const newFriend = frands(response.data);
     entryPoint.appendChild(newFriend);
 
@@ -41,7 +55,54 @@ axios
   .catch(error => {
     console.log("The data was not returned", error);
   })
-);
+
+axios.get('https://api.github.com/users/wais-a')
+  .then(response => {
+    console.log(response);
+    // response.data.login
+    const newFriend = frands(response.data);
+    entryPoint.appendChild(newFriend);
+
+  })
+  .catch(error => {
+    console.log("The data was not returned", error);
+  })
+
+axios.get('https://api.github.com/users/daredtech')
+  .then(response => {
+    console.log(response);
+    // response.data.login
+    const newFriend = frands(response.data);
+    entryPoint.appendChild(newFriend);
+
+  })
+  .catch(error => {
+    console.log("The data was not returned", error);
+  })
+
+axios.get('https://api.github.com/users/codeOfTheFuture')
+  .then(response => {
+    console.log(response);
+    // response.data.login
+    const newFriend = frands(response.data);
+    entryPoint.appendChild(newFriend);
+
+  })
+  .catch(error => {
+    console.log("The data was not returned", error);
+  })
+
+axios.get('https://api.github.com/users/thisisbenrogers')
+  .then(response => {
+    console.log(response);
+    // response.data.login
+    const newFriend = frands(response.data);
+    entryPoint.appendChild(newFriend);
+
+  })
+  .catch(error => {
+    console.log("The data was not returned", error);
+  })
 
 function frands(data) {
   const friendCard = document.createElement('div');
