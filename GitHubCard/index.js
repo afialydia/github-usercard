@@ -24,7 +24,98 @@
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = [
+  "dylanmestyanek", "codeOfTheFuture", "thisbenrogers", "daredtech", "Wais-A"
+]
+
+followersArray.forEach(item =>
+axios
+  .get('https://api.github.com/users/codeOfTheFuture')
+  .then(response => {
+    console.log(response);
+    response.data.login
+    const newFriend = frands(response.data);
+    entryPoint.appendChild(newFriend);
+
+  })
+  .catch(error => {
+    console.log("The data was not returned", error);
+  })
+);
+
+function frands(data) {
+  const friendCard = document.createElement('div');
+  const img = document.createElement('img');
+  const friendInfo = document.createElement('div')
+  const
+    name = document.createElement('h3'),
+    username = document.createElement('p'),
+    location = document.createElement('p'),
+    profile = document.createElement('p'),
+    pAddress = document.createElement('a'),
+    followers = document.createElement('p'),
+    following = document.createElement('p'),
+    bio = document.createElement('p');
+
+
+  img.src = `${data.avatar_url}`;
+  name.textContent = `${data.name}`;
+  username.textContent = `${data.login}`
+  location.textContent = `Location: ${data.location}`;
+  profile.textContent = `Profile: ${data.html_url}`
+  followers.textContent = `Followers: ${data.followers}`;
+  following.textContent = `Following: ${data.following}`
+  bio.textContent = `Bio: ${data.bio}`;
+
+  friendCard.appendChild(img);
+  friendCard.appendChild(friendInfo);
+  friendInfo.appendChild(name);
+  friendInfo.appendChild(username);
+  friendInfo.appendChild(location);
+  friendInfo.appendChild(profile);
+  profile.appendChild(pAddress);
+  friendInfo.appendChild(followers);
+  friendInfo.appendChild(following);
+  friendInfo.appendChild(bio);
+
+
+  friendInfo.classList.add('card-info');
+  friendCard.classList.add('card');
+  name.classList.add('name');
+  username.classList.add('username');
+
+
+  return friendCard;
+}
+
+let entryPoint = document.querySelector('.cards')
+
+axios
+  .get('https://api.github.com/users/afialydia')
+  .then(response => {
+    console.log(response);
+    // response.data.message
+    const newFriend = frands(response.data);
+    entryPoint.appendChild(newFriend);
+
+  })
+  .catch(error => {
+    console.log("The data was not returned", error);
+  });
+
+
+// let cardS = frands(data);
+
+
+
+// followersArray.forEach(data => {
+//   console.log('creating panel:', data.title)
+//   article.appendChild(createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph))
+// })
+
+
+
+
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
